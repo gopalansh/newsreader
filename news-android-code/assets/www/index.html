@@ -257,9 +257,17 @@
     }
     
     function populateSingleNews(xml){ 
-      var tmpTxt = $(xml).find(CATEGORY).first().text();
+      var tmpTxt = $(xml).find('link').first().text();
       var desc = $(xml).find(DESCR).first().text();
-      var category = CAT_ + tmpTxt;
+	
+      if(tmpTxt!='')
+	  {
+	  var category = CAT_ + tmpTxt.substring(22);
+	  }
+      else
+	  {
+	  var category = CAT_ + categoryVar.val();
+	  }
       var categoryDel = category + _D;
       var categoryLi = categoryDel + _LI;
       var categoryA = category + _A;
